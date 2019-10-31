@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, SetStateAction } from "react";
+import React, { useState, FormEvent } from "react";
 import { useDispatch } from 'react-redux';
 import { loggedin } from '../../actions/auth';
 import { push } from 'connected-react-router';
