@@ -1,7 +1,8 @@
 export default {
   s3: {
     REGION: "us-east-2",
-    BUCKET: "notes-app-for-new-dev"
+    BUCKET: "notes-app-for-new-dev",
+    MAX_ATTACHMENT_SIZE: 5000000
   },
   apiGateway: {
     REGION: "us-east-2",

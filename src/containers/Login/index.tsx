@@ -1,8 +1,7 @@
 import React, { useState, FormEvent } from "react";
-import { useDispatch } from 'react-redux';
-import { loggedin } from '../../actions/auth';
-import { push } from 'connected-react-router';
-
+import { useDispatch } from "react-redux";
+import { loggedin } from "../../actions/auth";
+import { push } from "connected-react-router";
 
 import {
   FormGroup,
@@ -14,7 +13,6 @@ import {
 import "./Login.css";
 
 import { Auth } from "aws-amplify";
-
 
 const Login: React.FC = () => {
   const dispatch = useDispatch();
@@ -45,7 +43,7 @@ const Login: React.FC = () => {
       await Auth.signIn(email, password);
       dispatch(loggedin);
       setLogginin(false);
-      dispatch(push('/'));
+      dispatch(push("/"));
     } catch (e) {
       setLogginin(false);
     }
@@ -71,8 +69,13 @@ const Login: React.FC = () => {
             onChange={handleChange}
           />
         </FormGroup>
-        <Button block bsSize="large" disabled={!validateForm() || logginin} type="submit">
-          {logginin ? 'Logging in ...' : 'Login'}
+        <Button
+          block
+          bsSize="large"
+          disabled={!validateForm() || logginin}
+          type="submit"
+        >
+          {logginin ? "Logging in ..." : "Login"}
         </Button>
       </form>
     </div>
