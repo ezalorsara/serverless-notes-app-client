@@ -1,9 +1,7 @@
-
 export const loggedin = {
-  type: 'SUCCESS_LOGIN'
-}
+  type: "SUCCESS_LOGIN"
+};
 
 export const loggedout = {
-  type: 'SUCCESS_LOGOUT'
-}
-
+  type: "SUCCESS_LOGOUT"
+};

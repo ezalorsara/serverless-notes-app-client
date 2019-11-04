@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
@@ -9,10 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loggedin, loggedout } from './actions/auth';
 import { Auth } from "aws-amplify";
 import { push } from 'connected-react-router'
-
-type isAuthenticatedType = {
-  loggedin_state: boolean
-}
+import { isAuthenticatedType } from './types';
 
 const App: React.FC = () => {
 
@@ -27,7 +24,7 @@ const App: React.FC = () => {
 
   async function onLoad() {
     try {
-      const user = await Auth.currentSession();
+      await Auth.currentSession();
       dispatch(loggedin);
     }
     catch (e) {

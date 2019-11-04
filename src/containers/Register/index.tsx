@@ -7,11 +7,10 @@ import {
 } from "react-bootstrap";
 import LoaderButton from "../../components/LoaderButton";
 import { useFormFields } from "../../libs/hooksLib";
-import { useDispatch } from 'react-redux';
-import { loggedin } from '../../actions/auth';
-import { push } from 'connected-react-router';
+import { useDispatch } from "react-redux";
+import { loggedin } from "../../actions/auth";
+import { push } from "connected-react-router";
 import "./Register.css";
-
 
 import { Auth } from "aws-amplify";
 
@@ -64,7 +63,7 @@ const Register: React.FC = () => {
       await Auth.confirmSignUp(fields.email, fields.confirmationCode);
       await Auth.signIn(fields.email, fields.password);
       dispatch(loggedin);
-      dispatch(push('/'));
+      dispatch(push("/"));
     } catch (e) {
       alert(e.message);
       setIsLoading(false);
@@ -140,7 +139,9 @@ const Register: React.FC = () => {
 
   return (
     <div className="Signup">
-      {Object.entries(newUser).length === 0 && newUser.constructor === Object ? renderForm() : renderConfirmationForm()}
+      {Object.entries(newUser).length === 0 && newUser.constructor === Object
+        ? renderForm()
+        : renderConfirmationForm()}
     </div>
   );
 };
