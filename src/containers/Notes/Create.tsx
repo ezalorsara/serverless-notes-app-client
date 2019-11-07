@@ -28,7 +28,7 @@ const CreateNote: React.FC = () => {
     file.current = files == null ? null : files[0];
   }
 
-  async function handleSubmit(event: any) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (file.current && file.current.size > config.s3.MAX_ATTACHMENT_SIZE) {
       alert(
@@ -41,9 +41,7 @@ const CreateNote: React.FC = () => {
 
     try {
       const attachment = file.current ? await s3Upload(file.current) : null;
-
       await createNote({ content, attachment });
-
       dispatch(push("/"));
     } catch (e) {
       alert(e);
@@ -52,7 +50,6 @@ const CreateNote: React.FC = () => {
   }
 
   function createNote(note: {}) {
-    console.log(note);
     return API.post("notes", "/notes", {
       body: note
     });
